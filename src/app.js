@@ -25,8 +25,8 @@ const app = express();
 const whitelist = [
   "http://127.0.0.1:9000",
   "http://127.0.0.1:5173",
-  "https://sierra-ecommerce.onrender.com",
-  "https://ecommerce-sierra.netlify.app/",
+  "https://employees-service-xh3x.onrender.com",
+  "https://employees-camilo.netlify.app/",
 ];
 
 const corsOptions = {
