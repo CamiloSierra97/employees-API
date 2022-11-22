@@ -1,5 +1,6 @@
 //? Dependencies
 const express = require("express");
+const cors = require("cors");
 const db = require("./utils/database");
 
 //? Files
@@ -16,9 +17,27 @@ const app = express();
 
 //? Seeders functions
 // const createUsers = require("./utils/seeders/users");
-const createAreas = require("./utils/seeders/areas");
-const createSubareas = require("./utils/seeders/subareas");
+// const createAreas = require("./utils/seeders/areas");
+// const createSubareas = require("./utils/seeders/subareas");
 // const createEmployees = require("./utils/seeders/employees");
+
+//? Enable Cors
+const whitelist = [
+  "http://127.0.0.1:9000",
+  "http://127.0.0.1:5173",
+  "https://sierra-ecommerce.onrender.com",
+  "https://ecommerce-sierra.netlify.app/",
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) != -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by cors"));
+    }
+  },
+};
 
 app.use(express.json());
 
@@ -42,7 +61,7 @@ initModels();
 
 //? Petitions
 
-app.get("/", (req, res) => {
+app.get("/", cors(corsOptions), (req, res) => {
   res.status(200).json({
     message: "Server OK!",
     users: `localhost:${config.port}/api/v1/users`,
@@ -60,8 +79,8 @@ app.listen(config.port, () => {
 
 //? Seeders execution
 // createUsers(db);
-createAreas(db);
-createSubareas(db);
+// createAreas(db);
+// createSubareas(db);
 // createEmployees.createFinancesEmployees(db);
 // createEmployees.createHREmployees(db);
 // createEmployees.createMarketingEmployees(db);
