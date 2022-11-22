@@ -1,9 +1,33 @@
 //? Dependencies
 const uuid = require("uuid");
+const Areas = require("../models/areas.models");
 const Employees = require("../models/employees.models");
+const Subareas = require("../models/subareas.models");
+const Users = require("../models/users.models");
 
 const getAllEmployees = async () => {
-  const data = await Employees.findAndCountAll();
+  const data = await Employees.findAndCountAll({
+    attributes: {
+      exclude: ["userId", "areaId", "subareaId"],
+    },
+    include: [
+      {
+        model: Users,
+        attributes: {
+          exclude: ["email", "password"],
+        },
+      },
+      {
+        model: Areas,
+      },
+      {
+        model: Subareas,
+        attributes: {
+          exclude: ["areaId"],
+        },
+      },
+    ],
+  });
   return data;
 };
 
@@ -21,6 +45,26 @@ const getEmployeeByBoss = async (user_id) => {
     where: {
       userId: user_id,
     },
+    attributes: {
+      exclude: ["userId", "areaId", "subareaId"],
+    },
+    include: [
+      {
+        model: Users,
+        attributes: {
+          exclude: ["email", "password"],
+        },
+      },
+      {
+        model: Areas,
+      },
+      {
+        model: Subareas,
+        attributes: {
+          exclude: ["areaId"],
+        },
+      },
+    ],
   });
   return data;
 };
