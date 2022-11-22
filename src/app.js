@@ -40,6 +40,7 @@ const corsOptions = {
 };
 
 app.use(express.json());
+app.use(cors());
 
 db.authenticate()
   .then(() => {
