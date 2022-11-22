@@ -15,9 +15,9 @@ const employeesRouter = require("./employees/employees.router");
 const app = express();
 
 //? Seeders functions
-const createUsers = require("./utils/seeders/users");
-// const createAreas = require("./utils/seeders/areas");
-// const createSubareas = require("./utils/seeders/subareas");
+// const createUsers = require("./utils/seeders/users");
+const createAreas = require("./utils/seeders/areas");
+const createSubareas = require("./utils/seeders/subareas");
 // const createEmployees = require("./utils/seeders/employees");
 
 app.use(express.json());
@@ -59,9 +59,9 @@ app.listen(config.port, () => {
 });
 
 //? Seeders execution
-createUsers(db);
-// createAreas(db);
-// createSubareas(db);
+// createUsers(db);
+createAreas(db);
+createSubareas(db);
 // createEmployees.createFinancesEmployees(db);
 // createEmployees.createHREmployees(db);
 // createEmployees.createMarketingEmployees(db);
