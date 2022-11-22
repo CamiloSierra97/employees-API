@@ -14,6 +14,12 @@ const employeesRouter = require("./employees/employees.router");
 //? Initial Configs
 const app = express();
 
+//? Seeders functions
+// const createUsers = require("./utils/seeders/users");
+// const createAreas = require("./utils/seeders/areas");
+// const createSubareas = require("./utils/seeders/subareas");
+// const createEmployees = require("./utils/seeders/employees");
+
 app.use(express.json());
 
 db.authenticate()
@@ -51,3 +57,13 @@ app.use("/api/v1/employees", employeesRouter);
 app.listen(config.port, () => {
   console.log(`Server started at port ${config.port}`);
 });
+
+//? Seeders execution
+// createUsers(db);
+// createAreas(db);
+// createSubareas(db);
+// createEmployees.createFinancesEmployees(db);
+// createEmployees.createHREmployees(db);
+// createEmployees.createMarketingEmployees(db);
+// createEmployees.createOperationsEmployees(db);
+// createEmployees.createTechnologyEmployees(db);

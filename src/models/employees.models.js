@@ -24,7 +24,6 @@ const Employees = db.define("employees", {
   phone: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
   },
   birthday: {
     type: DataTypes.DATEONLY,
@@ -38,6 +37,7 @@ const Employees = db.define("employees", {
   identificationCardNumber: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    unique: true,
     field: "identification_card_number",
   },
   gender: {
