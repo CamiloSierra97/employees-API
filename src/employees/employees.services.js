@@ -17,7 +17,7 @@ const getAllEmployeesPagination = (req, res) => {
   const limit = Number(req.query.limit) || 10;
   const urlBase = `${host}/api/v1/employees`;
   employeeControllers
-    .getAllEmployees(offset, limit)
+    .getAllEmployeesPagination(offset, limit)
     .then((data) => {
       const nextPage =
         data.count - offset >= limit
