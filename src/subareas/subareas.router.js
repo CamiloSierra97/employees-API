@@ -7,11 +7,11 @@ const passport = require("passport");
 
 //? Routes
 
-//? /api/v1/users
+//? /api/v1/subareas
 router.get(
   "/",
   passport.authenticate("jwt", { session: false }),
-  subareaServices.getSubareasByArea
+  subareaServices.getSubareas
 );
 
 module.exports = router;

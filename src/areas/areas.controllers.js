@@ -1,4 +1,3 @@
-//? Dependencies
 const Areas = require("../models/areas.models");
 
 const getAllAreas = async () => {

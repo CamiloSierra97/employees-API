@@ -1,9 +1,9 @@
 const subareasControllers = require("./subareas.controllers");
 
-const getSubareasByArea = (req, res) => {
-  const areaId = req.body;
+const getSubareas = (req, res) => {
+  const areaName = req.body;
   subareasControllers
-    .getSubareasByArea(areaId)
+    .getSubareasByAreaName(areaName)
     .then((data) => {
       if (data) {
         res.status(200).json(data);
@@ -17,5 +17,5 @@ const getSubareasByArea = (req, res) => {
 };
 
 module.exports = {
-  getSubareasByArea,
+  getSubareas,
 };

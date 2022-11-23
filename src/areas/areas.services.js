@@ -11,6 +11,7 @@ const getAllAreas = (req, res) => {
     });
 };
 
+
 module.exports = {
   getAllAreas,
 };
