@@ -18,7 +18,7 @@ router
   );
 
 router
-  .route("/:employee_id")
+  .route("/:id")
   .get(
     passport.authenticate("jwt", { session: false }),
     employeeServices.getEmployeeById
