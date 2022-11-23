@@ -1,14 +1,28 @@
 const employeeControllers = require("./employees.controllers");
+const { host } = require("../config");
 
 const getAllEmployees = (req, res) => {
-  const { offset, limit } = req.query;
+  const offset = Number(req.query.offset) || 0;
+  const limit = Number(req.query.limit) || 10;
+  const urlBase = `${host}/api/v1/employees`;
   employeeControllers
     .getAllEmployees(offset, limit)
     .then((data) => {
+      const nextPage =
+        data.count - offset >= limit
+          ? `${urlBase}?offset=${offset + limit}&limit=${limit}`
+          : null;
+      const prevPage =
+        offset - limit >= 0
+          ? `${urlBase}?offset=${offset - limit}&limit=${limit}`
+          : null;
       res.status(200).json({
+        next: nextPage,
+        previous: prevPage,
+        amount: data.count,
         offset,
         limit,
-        results: data,
+        results: data.rows,
       });
     })
     .catch((err) => {
@@ -141,12 +155,23 @@ const deleteEmployee = (req, res) => {
 const getMyEmployees = (req, res) => {
   const user_id = req.user.id;
   employeeControllers
-    .getEmployeeByBoss(user_id)
+    .getEmployeeByBoss(user_id, offset, limit)
     .then((data) => {
+      const nextPage =
+        data.count - offset >= limit
+          ? `${urlBase}?offset=${offset + limit}&limit=${limit}`
+          : null;
+      const prevPage =
+        offset - limit >= 0
+          ? `${urlBase}?offset=${offset - limit}&limit=${limit}`
+          : null;
       res.status(200).json({
+        next: nextPage,
+        previous: prevPage,
+        amount: data.count,
         offset,
         limit,
-        results: data,
+        results: data.rows,
       });
     })
     .catch((err) => {
