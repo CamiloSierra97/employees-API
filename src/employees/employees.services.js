@@ -31,9 +31,9 @@ const getAllEmployees = (req, res) => {
 };
 
 const getEmployeeById = (req, res) => {
-  const employee_id = req.params.id;
+  const id = req.params.id;
   employeeControllers
-    .getEmployeeById(employee_id)
+    .getEmployeeById(id)
     .then((data) => {
       if (data) {
         res.status(200).json(data);
@@ -47,10 +47,10 @@ const getEmployeeById = (req, res) => {
 };
 
 const patchEmployee = (req, res) => {
-  const employee_id = req.params.id;
+  const id = req.params.id;
   const { phone, gender, country, address } = req.body;
   employeeControllers
-    .updateEmployee(employee_id, { phone, gender, country, address })
+    .updateEmployee(id, { phone, gender, country, address })
     .then((data) => {
       if (data[0]) {
         res
@@ -136,9 +136,9 @@ const registerEmployee = (req, res) => {
 };
 
 const deleteEmployee = (req, res) => {
-  const employee_id = req.params.id;
+  const id = req.params.id;
   employeeControllers
-    .deleteEmployee(employee_id)
+    .deleteEmployee(id)
     .then((data) => {
       if (data !== 0) {
         res.status(204).json();
@@ -183,7 +183,7 @@ const getMyEmployees = (req, res) => {
 };
 
 const deactivateEmployee = (req, res) => {
-  const employee_id = req.params.id;
+  const id = req.params.id;
   employeeControllers
     .updateEmployee(employee_id, { status: "inactive" })
     .then((data) => {
