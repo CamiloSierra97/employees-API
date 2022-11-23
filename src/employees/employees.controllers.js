@@ -42,12 +42,12 @@ const getEmployeeById = async (employee_id) => {
   return data;
 };
 
-const getEmployeeByBoss = async (user_id, offset, limit) => {
+const getEmployeeByBoss = async (userId, offset, limit) => {
   const data = await Employees.findAndCountAll({
     offset,
     limit,
     where: {
-      userId: user_id,
+      userId,
     },
     attributes: {
       exclude: ["userId", "areaId", "subareaId"],
