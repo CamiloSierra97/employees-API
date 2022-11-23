@@ -33,10 +33,10 @@ const getAllEmployees = async (offset, limit) => {
   return data;
 };
 
-const getEmployeeById = async (employee_id) => {
+const getEmployeeById = async (id) => {
   const data = await Employees.findOne({
     where: {
-      id: employee_id,
+      id,
     },
   });
   return data;
@@ -89,19 +89,19 @@ const createEmployee = async (data) => {
   return newEmployee;
 };
 
-const updateEmployee = async (employee_id, data) => {
+const updateEmployee = async (id, data) => {
   const response = await Employees.update(data, {
     where: {
-      id: employee_id,
+      id,
     },
   });
   return response;
 };
 
-const deleteEmployee = async (employee_id) => {
+const deleteEmployee = async (id) => {
   const data = await Employees.destroy({
     where: {
-      id: employee_id,
+      id,
     },
   });
   return data;
