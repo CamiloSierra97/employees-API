@@ -6,7 +6,9 @@ const Subareas = require("../models/subareas.models");
 const Users = require("../models/users.models");
 
 const getAllEmployees = async () => {
-  const data = await Employees.findAndCountAll({
+  const data = await Employees.findAll({
+    offset: offset ? offset : 0,
+    limit: limit ? limit : 10,
     attributes: {
       exclude: ["userId", "areaId", "subareaId"],
     },
@@ -41,7 +43,7 @@ const getEmployeeById = async (employee_id) => {
 };
 
 const getEmployeeByBoss = async (user_id) => {
-  const data = await Employees.findAndCountAll({
+  const data = await Employees.findAll({
     where: {
       userId: user_id,
     },

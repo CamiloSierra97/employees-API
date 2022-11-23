@@ -19,7 +19,7 @@ const app = express();
 // const createUsers = require("./utils/seeders/users");
 // const createAreas = require("./utils/seeders/areas");
 // const createSubareas = require("./utils/seeders/subareas");
-const createEmployees = require("./utils/seeders/employees");
+// const createEmployees = require("./utils/seeders/employees");
 
 //? Enable Cors
 const whitelist = [
@@ -82,8 +82,8 @@ app.listen(config.port, () => {
 // createUsers(db);
 // createAreas(db);
 // createSubareas(db);
-createEmployees.createFinancesEmployees(db);
-createEmployees.createHREmployees(db);
-createEmployees.createMarketingEmployees(db);
-createEmployees.createOperationsEmployees(db);
-createEmployees.createTechnologyEmployees(db);
+// createEmployees.createFinancesEmployees(db);
+// createEmployees.createHREmployees(db);
+// createEmployees.createMarketingEmployees(db);
+// createEmployees.createOperationsEmployees(db);
+// createEmployees.createTechnologyEmployees(db);

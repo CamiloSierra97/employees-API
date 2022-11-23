@@ -1,10 +1,15 @@
 const employeeControllers = require("./employees.controllers");
 
 const getAllEmployees = (req, res) => {
+  const { offset, limit } = req.query;
   employeeControllers
-    .getAllEmployees()
+    .getAllEmployees(offset, limit)
     .then((data) => {
-      res.status(200).json(data);
+      res.status(200).json({
+        offset,
+        limit,
+        results: data,
+      });
     })
     .catch((err) => {
       res.status(400).json({ message: err.message });
@@ -138,7 +143,11 @@ const getMyEmployees = (req, res) => {
   employeeControllers
     .getEmployeeByBoss(user_id)
     .then((data) => {
-      res.status(200).json(data);
+      res.status(200).json({
+        offset,
+        limit,
+        results: data,
+      });
     })
     .catch((err) => {
       res.status(400).json({ message: err.message });
