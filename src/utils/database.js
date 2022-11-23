@@ -8,15 +8,12 @@ const db = new Sequelize({
   username: config.db.username,
   password: config.db.password,
   database: config.db.dbName,
-  dialectOptions:
-    process.env.NODE_ENV === "production"
-      ? {
-          ssl: {
-            require: true,
-            rejectUnauthorized: false,
-          },
-        }
-      : {},
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 module.exports = db;
