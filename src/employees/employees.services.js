@@ -31,7 +31,7 @@ const getAllEmployees = (req, res) => {
 };
 
 const getEmployeeById = (req, res) => {
-  const employee_id = req.params.employee_id;
+  const employee_id = req.params.id;
   employeeControllers
     .getEmployeeById(employee_id)
     .then((data) => {
@@ -47,7 +47,7 @@ const getEmployeeById = (req, res) => {
 };
 
 const patchEmployee = (req, res) => {
-  const employee_id = req.params.employee_id;
+  const employee_id = req.id;
   const { phone, gender, country, address } = req.body;
   employeeControllers
     .updateEmployee(employee_id, { phone, gender, country, address })
@@ -136,7 +136,7 @@ const registerEmployee = (req, res) => {
 };
 
 const deleteEmployee = (req, res) => {
-  const employee_id = req.params.employee_id;
+  const employee_id = req.params.id;
   employeeControllers
     .deleteEmployee(employee_id)
     .then((data) => {
@@ -153,7 +153,6 @@ const deleteEmployee = (req, res) => {
 
 //? My employees services
 const getMyEmployees = (req, res) => {
-  const user_id = req.user.id;
   const offset = Number(req.query.offset) || 0;
   const limit = Number(req.query.limit) || 10;
   const urlBase = `${host}/api/v1/employees`;
@@ -183,7 +182,7 @@ const getMyEmployees = (req, res) => {
 };
 
 const deactivateEmployee = (req, res) => {
-  const employee_id = req.params.employee_id;
+  const employee_id = req.params.id;
   employeeControllers
     .updateEmployee(employee_id, { status: "inactive" })
     .then((data) => {
