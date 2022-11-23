@@ -47,7 +47,7 @@ const getEmployeeByBoss = async (userId, offset, limit) => {
     offset,
     limit,
     where: {
-      userId,
+      userId
     },
     attributes: {
       exclude: ["userId", "areaId", "subareaId"],

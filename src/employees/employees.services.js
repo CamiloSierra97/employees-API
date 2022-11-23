@@ -66,6 +66,7 @@ const patchEmployee = (req, res) => {
 };
 
 const registerEmployee = (req, res) => {
+  const userId = req.user.id;
   const {
     firstName,
     lastName,
@@ -74,7 +75,6 @@ const registerEmployee = (req, res) => {
     identificationCardType,
     identificationCardNumber,
     gender,
-    userId,
     country,
     address,
     status,

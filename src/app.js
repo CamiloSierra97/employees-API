@@ -11,6 +11,8 @@ const initModels = require("./models/initModels");
 const usersRouter = require("./users/users.router");
 const authRouter = require("./auth/auth.router");
 const employeesRouter = require("./employees/employees.router");
+const areasRouter = require("./areas/areas.router");
+const subareasRouter = require("./subareas/subareas.router");
 
 //? Initial Configs
 const app = express();
@@ -73,6 +75,8 @@ app.get("/", cors(corsOptions), (req, res) => {
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/employees", employeesRouter);
+app.use("/api/v1/areas", areasRouter);
+app.use("/api/v1/subareas", subareasRouter);
 
 app.listen(config.port, () => {
   console.log(`Server started at port ${config.port}`);
