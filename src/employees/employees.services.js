@@ -2,6 +2,17 @@ const employeeControllers = require("./employees.controllers");
 const { host } = require("../config");
 
 const getAllEmployees = (req, res) => {
+  employeeControllers
+    .getAllEmployees()
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      res.status(400).json({ message: err.message });
+    });
+};
+
+const getAllEmployeesPagination = (req, res) => {
   const offset = Number(req.query.offset) || 0;
   const limit = Number(req.query.limit) || 10;
   const urlBase = `${host}/api/v1/employees`;
@@ -195,6 +206,7 @@ const deactivateEmployee = (req, res) => {
 
 module.exports = {
   getAllEmployees,
+  getAllEmployeesPagination,
   getEmployeeById,
   patchEmployee,
   registerEmployee,

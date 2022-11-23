@@ -5,7 +5,33 @@ const Employees = require("../models/employees.models");
 const Subareas = require("../models/subareas.models");
 const Users = require("../models/users.models");
 
-const getAllEmployees = async (offset, limit) => {
+const getAllEmployees = async () => {
+  const data = await Employees.findAll({
+    attributes: {
+      exclude: ["userId", "areaId", "subareaId"],
+    },
+    include: [
+      {
+        model: Users,
+        attributes: {
+          exclude: ["email", "password"],
+        },
+      },
+      {
+        model: Areas,
+      },
+      {
+        model: Subareas,
+        attributes: {
+          exclude: ["areaId"],
+        },
+      },
+    ],
+  });
+  return data;
+};
+
+const getAllEmployeesPagination = async (offset, limit) => {
   const data = await Employees.findAndCountAll({
     offset,
     limit,
@@ -112,6 +138,7 @@ const deleteEmployee = async (id) => {
 
 module.exports = {
   getAllEmployees,
+  getAllEmployeesPagination,
   getEmployeeById,
   createEmployee,
   updateEmployee,

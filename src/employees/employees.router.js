@@ -14,8 +14,14 @@ router
   .route("/")
   .get(
     passport.authenticate("jwt", { session: false }),
-    employeeServices.getAllEmployees
+    employeeServices.getAllEmployeesPagination
   );
+
+router.get(
+  "/no_pagination",
+  passport.authenticate("jwt", { session: false }),
+  employeeServices.getAllEmployees
+);
 
 router
   .route("/:id")
