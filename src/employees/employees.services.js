@@ -66,6 +66,7 @@ const patchEmployee = (req, res) => {
 };
 
 const registerEmployee = (req, res) => {
+  console.log(req.user);
   const userId = req.user.id;
   const {
     firstName,
