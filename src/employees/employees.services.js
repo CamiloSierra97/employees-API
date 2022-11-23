@@ -66,6 +66,7 @@ const patchEmployee = (req, res) => {
 };
 
 const registerEmployee = (req, res) => {
+  const userId = req.user.id;
   const {
     firstName,
     lastName,
@@ -77,7 +78,6 @@ const registerEmployee = (req, res) => {
     country,
     address,
     status,
-    userId,
     areaId,
     subareaId,
   } = req.body;
@@ -88,7 +88,6 @@ const registerEmployee = (req, res) => {
     birthday &&
     identificationCardType &&
     identificationCardNumber &&
-    userId &&
     country &&
     areaId &&
     subareaId
@@ -185,7 +184,7 @@ const getMyEmployees = (req, res) => {
 const deactivateEmployee = (req, res) => {
   const id = req.params.id;
   employeeControllers
-    .updateEmployee(employee_id, { status: "inactive" })
+    .updateEmployee(id, { status: "inactive" })
     .then((data) => {
       res.status(200).json("Your user was deleted succesfully");
     })

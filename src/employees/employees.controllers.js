@@ -85,6 +85,9 @@ const createEmployee = async (data) => {
     gender: data.gender,
     country: data.country,
     address: data.address,
+    userId: data.userId,
+    areaId: data.areaId,
+    subareaId: data.subareaId,
   });
   return newEmployee;
 };
