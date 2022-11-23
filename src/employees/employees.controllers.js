@@ -7,8 +7,8 @@ const Users = require("../models/users.models");
 
 const getAllEmployees = async () => {
   const data = await Employees.findAndCountAll({
-    offset,
-    limit,
+    offset: offset,
+    limit: limit,
     attributes: {
       exclude: ["userId", "areaId", "subareaId"],
     },

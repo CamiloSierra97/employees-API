@@ -154,6 +154,9 @@ const deleteEmployee = (req, res) => {
 //? My employees services
 const getMyEmployees = (req, res) => {
   const user_id = req.user.id;
+  const offset = Number(req.query.offset) || 0;
+  const limit = Number(req.query.limit) || 10;
+  const urlBase = `${host}/api/v1/employees`;
   employeeControllers
     .getEmployeeByBoss(user_id, offset, limit)
     .then((data) => {
