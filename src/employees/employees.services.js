@@ -47,7 +47,7 @@ const getEmployeeById = (req, res) => {
 };
 
 const patchEmployee = (req, res) => {
-  const employee_id = req.id;
+  const employee_id = req.params.id;
   const { phone, gender, country, address } = req.body;
   employeeControllers
     .updateEmployee(employee_id, { phone, gender, country, address })
