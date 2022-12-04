@@ -29,9 +29,9 @@ const getUserById = (req, res) => {
 
 const patchUser = (req, res) => {
   const id = req.params.id;
-  const { firstName, lastName, phone, gender, country } = req.body;
+  const { firstName, lastName, phone, gender, country, role } = req.body;
   userControllers
-    .updateUser(id, { firstName, lastName, phone, gender, country })
+    .updateUser(id, { firstName, lastName, phone, gender, country, role })
     .then((data) => {
       if (data[0]) {
         res

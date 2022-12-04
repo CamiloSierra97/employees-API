@@ -64,7 +64,7 @@ initModels();
 
 //? Petitions
 
-app.get("/", cors(corsOptions), (req, res) => {
+app.get("/", cors({ corsOptions }), (req, res) => {
   res.status(200).json({
     message: "Server OK!",
     users: `localhost:${config.port}/api/v1/users`,
