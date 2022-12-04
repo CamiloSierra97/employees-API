@@ -24,22 +24,12 @@ const app = express();
 // const createEmployees = require("./utils/seeders/employees");
 
 //? Enable Cors
-const whitelist = [
-  "http://127.0.0.1:9000",
-  "http://127.0.0.1:5173",
-  "https://employees-service-4g33.onrender.com",
-  "https://employees-camilo.netlify.app/",
-];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) != -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by cors"));
-    }
-  },
-};
+// const whitelist = [
+//   "http://127.0.0.1:9000",
+//   "http://127.0.0.1:5173",
+//   "https://employees-service-4g33.onrender.com",
+//   "https://employees-camilo.netlify.app/",
+// ];
 
 app.use(express.json());
 app.use(cors());
@@ -64,7 +54,7 @@ initModels();
 
 //? Petitions
 
-app.get("/", cors(corsOptions), (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).json({
     message: "Server OK!",
     users: `localhost:${config.port}/api/v1/users`,
