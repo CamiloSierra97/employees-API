@@ -27,7 +27,7 @@ const app = express();
 const whitelist = [
   "http://127.0.0.1:9000",
   "http://127.0.0.1:5173",
-  "https://employees-service-xh3x.onrender.com",
+  "https://employees-service-4g33.onrender.com",
   "https://employees-camilo.netlify.app/",
 ];
 
